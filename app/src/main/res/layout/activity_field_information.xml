@@ -21,7 +21,7 @@
         android:text="OLZHA SPORT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
+        android:id="@+id/info_name"
         android:textSize="24sp"
         android:layout_below="@+id/textView5"
         android:layout_alignStart="@+id/textView5"
@@ -31,20 +31,20 @@
         android:text="Цена:5000тг"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/info_price"
         android:textSize="24sp"
         android:layout_marginTop="17dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:layout_below="@+id/info_name"
+        android:layout_alignStart="@+id/info_name" />
 
     <TextView
         android:text="Время"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:id="@+id/textView2"
+        android:id="@+id/info_time"
         android:textSize="24sp"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/info_tel"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -52,8 +52,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:id="@+id/textView6"
+        android:id="@+id/info_tel"
         android:textSize="24sp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/info_address"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/info_address"
+        android:textSize="24sp"
+
+        android:layout_below="@+id/info_price"
+        android:layout_alignEnd="@+id/info_name"
+        android:layout_alignStart="@+id/info_price"
+        android:paddingTop="10dp" />
 </RelativeLayout>

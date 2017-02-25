@@ -15,12 +15,13 @@
         android:scaleType="fitXY"/>
 
     <TabHost
-        android:layout_width="200dip"
-        android:layout_height="300dip"
+        android:id="@+id/tab_host"
         android:layout_below="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,33 +38,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/tab1"
+                <include
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    layout="@layout/tab_lists"
+                    android:id="@+id/tab1" />
 
-                    <ListView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
+                <include
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    layout="@layout/tab2_list"
+                    android:id="@+id/tab2" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
+                <include
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    layout="@layout/tab3_list"
+                    android:id="@+id/tab3"/>
 
-                </LinearLayout>
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/tab4_map"
+                    android:id="@+id/tab4"/>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
 </RelativeLayout>
