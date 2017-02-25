@@ -83,7 +83,7 @@ public class field_information extends Activity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.add_field);
+                setContentView(R.layout.edit_filed);
             }
         });
         fab2.setOnClickListener(new View.OnClickListener() {
