@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
  */
 
 public class CustomSwipeAdapter extends PagerAdapter {
-    private int [] images = {R.drawable.a,R.drawable.a146};
+    private int [] images = {R.drawable.a};
     private Context ctx;
     private LayoutInflater layoutInflater;
 

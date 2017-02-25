@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:text="Информация"
@@ -68,4 +70,48 @@
         android:layout_alignEnd="@+id/info_name"
         android:layout_alignStart="@+id/info_price"
         android:paddingTop="10dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:id="@+id/info_fab2"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/info_tel"
+        android:layout_alignStart="@+id/info_fab1" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:id="@+id/info_fab1"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_person_add_black_24dp"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/info_time"
+        android:layout_alignStart="@+id/info_fab" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:id="@+id/info_fab"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:src="@drawable/ic_account_circle_black_24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        />
 </RelativeLayout>

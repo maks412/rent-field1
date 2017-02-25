@@ -3,6 +3,7 @@ package com.example.maks.rend1;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,9 +20,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     boolean logged = false;//kirdi ma sony tekseredi!!!
+    boolean admin = false;
     List<Field_list> field_list = new ArrayList<Field_list>();
     ListAdapter customAdapter;
     TabHost tabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setTitle("    Rent-Field");
         setContentView(R.layout.activity_main);
-
+///////////////////////////////////////////////// tabhost kostym!!!!!!!!!
         tabHost = (TabHost)findViewById(R.id.tab_host);
         tabHost.setup();
         TabHost.TabSpec spec1 = tabHost.newTabSpec("like");
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         spec4.setIndicator("Map");
         spec4.setContent(R.id.tab4);
         tabHost.addTab(spec4);
-
+        ///////////////////////////////////////////////////////listView
         Field_list field1 = new Field_list(1,R.drawable.ic_person_add_black_24dp,"Maks","5000","87759771615","SDU",158,35);
         Field_list field2 = new Field_list(1,R.drawable.ic_person_add_black_24dp,"Maksat","15000","87759771615","SDU",158,35);
         field_list.add(field1);
@@ -85,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 tab2_list.setAdapter(customAdapter);
             }
         });
+
+        ////////////////////////////////////////////////////////osi jerden bitedi!!!!!!!!!!!!!!!!
         if(logged){
             getSupportActionBar().setLogo(R.drawable.ic_search_black_24dp);
         }
@@ -155,41 +160,54 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         final MenuItem enter = menu.findItem(R.id.enter);
         final MenuItem search = menu.findItem(R.id.search);
-        if(logged){
-            enter.setVisible(false);
-        }
 
-        enter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                final Dialog dialog = new Dialog(MainActivity.this);
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.dialog_login, null);
-                dialog.setContentView(layout);
-                //dialog.setContentView(R.layout.dialog_login);
-                dialog.setTitle("Войти");
-                EditText log = (EditText)dialog.findViewById(R.id.login_login);
-                EditText pass = (EditText)dialog.findViewById(R.id.login_pass);
-                Button ok = (Button)dialog.findViewById(R.id.button_login);
-                ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        logged = true;
-                        dialog.dismiss();
 
+
+            enter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if(logged) {
+                        Intent i = new Intent(getApplicationContext(), Profile_user.class);
+                        startActivity(i);
                     }
-                });
-                dialog.show();
-                /////////////////////////////////////////LOGIN PART
-                return false;
-            }
-        });
+
+                    else{
+                        final Dialog dialog = new Dialog(MainActivity.this);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.dialog_login, null);
+                        dialog.setContentView(layout);
+                        //dialog.setContentView(R.layout.dialog_login);
+                        dialog.setTitle("Войти");
+                        final EditText log = (EditText) dialog.findViewById(R.id.login_login);
+                        EditText pass = (EditText) dialog.findViewById(R.id.login_pass);
+                        Button ok = (Button) dialog.findViewById(R.id.button_login);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                logged = true;
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                                enter.setIcon(R.drawable.ic_account_circle_black_24dp);
+                                if(log.getText().toString().equals("admin")){
+                                    admin = true;
+                                }
+                                if(admin){
+                                    Intent i = new Intent(getApplicationContext(),Admin.class);
+                                    startActivity(i);
+                                }
+                                dialog.dismiss();
+
+                            }
+                        });
+
+                        dialog.show();
+                    }
+                    return false;
+                }
+            });
 
         search.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Intent i = new Intent(getApplicationContext(),add_field_java.class);
-                getApplicationContext().startActivity(i);
                 return false;
             }
         });

@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".field_information" ></activity>
+        <activity android:name=".field_information" />
+        <activity android:name=".Profile_user" />
+        <activity android:name=".Admin"></activity>
     </application>
 
 </manifest>

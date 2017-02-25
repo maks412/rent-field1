@@ -70,7 +70,7 @@ public class ListAdapter extends ArrayAdapter<Field_list> {
                 intent.putExtra("tel",p.getTel());
                 intent.putExtra("address",p.getAddress());
                 intent.putExtra("price",p.getPrice());
-
+                intent.putExtra("admin",true);
                 getContext().startActivity(intent);
             }
         });
