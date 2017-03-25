@@ -1,9 +1,13 @@
 package com.example.maks.rend1;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,27 +41,56 @@ public class MainActivity extends AppCompatActivity {
 ///////////////////////////////////////////////// tabhost kostym!!!!!!!!!
         tabHost = (TabHost)findViewById(R.id.tab_host);
         tabHost.setup();
-        TabHost.TabSpec spec1 = tabHost.newTabSpec("like");
-        spec1.setIndicator("like");
+        final TabHost.TabSpec spec1 = tabHost.newTabSpec("like");
         spec1.setContent(R.id.tab1);
-        TabHost.TabSpec spec2 = tabHost.newTabSpec("price");
-        spec2.setIndicator("Price");
+        spec1.setIndicator("",getResources().getDrawable(R.drawable.like2));
+
+
+        final TabHost.TabSpec spec2 = tabHost.newTabSpec("price");
+        spec2.setIndicator("", getResources().getDrawable(R.drawable.dollar_coin_money2));
         spec2.setContent(R.id.tab2);
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);
 
-        TabHost.TabSpec spec3 = tabHost.newTabSpec("time");
-        spec3.setIndicator("Time");
+        final TabHost.TabSpec spec3 = tabHost.newTabSpec("time");
+        spec3.setIndicator("",getResources().getDrawable(R.drawable.clock2));
         spec3.setContent(R.id.tab3);
         tabHost.addTab(spec3);
 
-        TabHost.TabSpec spec4 = tabHost.newTabSpec("map");
-        spec4.setIndicator("Map");
+        final TabHost.TabSpec spec4 = tabHost.newTabSpec("map");
+        spec4.setIndicator("",getResources().getDrawable(R.drawable.mapn));
         spec4.setContent(R.id.tab4);
         tabHost.addTab(spec4);
+
+        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+            tabHost.getTabWidget().getChildAt(i)
+                    .setBackgroundColor(Color.parseColor("#81d4fa")); // unselected
+
+        }
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
+                .setBackgroundColor(Color.BLUE); // selected
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+
+            public void onTabChanged(String arg0) {
+                for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+                    tabHost.getTabWidget().getChildAt(i)
+                            .setBackgroundColor(Color.parseColor("#81d4fa")); // unselected
+
+                }
+                tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
+                        .setBackgroundColor(Color.BLUE); // selected
+
+                /*if(tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()) == tabHost.getTabWidget().getChildAt(0)){
+                    spec1.setIndicator("",getResources().getDrawable(R.drawable.like));
+
+                }*/
+
+            }
+        });
         ///////////////////////////////////////////////////////listView
-        Field_list field1 = new Field_list(1,R.drawable.ic_person_add_black_24dp,"Maks","5000","87759771615","SDU",158,35);
-        Field_list field2 = new Field_list(1,R.drawable.ic_person_add_black_24dp,"Maksat","15000","87759771615","SDU",158,35);
+        Field_list field1 = new Field_list(1,R.drawable.a,"Maks","5000","87759771615","SDU",158,35);
+        Field_list field2 = new Field_list(1,R.drawable.a146,"Maksat","15000","87759771615","SDU",158,35);
         field_list.add(field1);
         field_list.add(field2);
         ListView tab1_list = (ListView)findViewById(R.id.tab1_list);
@@ -79,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 int price2 = Integer.parseInt(tab2_price2.getText().toString());
                 for(int i=0;i<field_list.size();i++){
                     int price = Integer.parseInt(field_list.get(i).getPrice());
-                    if(price1 < price && price2 > price){
+                    if(price1 <= price && price2 >= price){
                         new_list.add(field_list.get(i));
                     }
                 }
